@@ -46,53 +46,53 @@ function Signup() {
           </Link>
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+
+        <form onSubmit={handleSubmit(create)}>
+          <div className="space-y-5">
+            <Input
+              label="Name: "
+              placeholder="Enter your name"
+              {...register("name", {
+                required: true,
+              })}
+            />
+
+            <Input
+              label="Email: "
+              placeholder="Enter your email"
+              type="email"
+              {...register("email", {
+                required: true,
+                validate: {
+                  matchPattern: (value) =>
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ||
+                    "Email address must be a vlaid address",
+                },
+              })}
+            />
+
+            <Input
+              label="Password: "
+              type="password"
+              placeholder="Enter your password"
+              {...register("password", {
+                required: true,
+                validate: {
+                  matchPattern: (value) =>
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+                      value,
+                    ) ||
+                    "Password must be at least 8 characters with uppercase, lowercase, number, and special character",
+                },
+              })}
+            />
+
+            <Button type="submit" className="w-full">
+              Create Account
+            </Button>
+          </div>
+        </form>
       </div>
-
-      <form onSubmit={handleSubmit(create)}>
-        <div className="space-y-5">
-          <Input
-            label="Name: "
-            placeholder="Enter your name"
-            {...register("name", {
-              required: true,
-            })}
-          />
-
-          <Input
-            label="Email: "
-            placeholder="Enter your email"
-            type="email"
-            {...register("email", {
-              required: true,
-              validate: {
-                matchPattern: (value) =>
-                  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ||
-                  "Email address must be a vlaid address",
-              },
-            })}
-          />
-
-          <Input
-            label="Password: "
-            type="password"
-            placeholder="Enter your password"
-            {...register("password", {
-              required: true,
-              validate: {
-                matchPattern: (value) =>
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-                    value,
-                  ) ||
-                  "Password must be at least 8 characters with uppercase, lowercase, number, and special character",
-              },
-            })}
-          />
-
-          <Button type="submit" className="w-full">
-            Create Account
-          </Button>
-        </div>
-      </form>
     </div>
   );
 }
