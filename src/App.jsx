@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
@@ -8,7 +7,7 @@ import { Footer, Header } from "./components";
 
 function App() {
 
-  const [Loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -21,9 +20,10 @@ function App() {
       }
     })
     .finally(() => setLoading(false))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return !Loading ? (
+  return !loading ? (
     <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
       <div className="w-full block">
         <Header />
