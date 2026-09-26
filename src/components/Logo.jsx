@@ -1,9 +1,12 @@
-// import React from "react";
-
-function Logo({ width = "100px" }) {
+function Logo({ width = "48px", className = "" }) {
   return (
-    <div>Logo</div>
-  ) 
+    <img
+      src="/Quorilo-Logo.png"
+      alt="Quorilo"
+      style={{ width }}
+      className={`h-auto object-contain ${className}`}
+    />
+  );
 }
 
 export default Logo;

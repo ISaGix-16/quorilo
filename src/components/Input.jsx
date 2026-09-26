@@ -2,14 +2,16 @@ import React, { useId } from "react";
 
 const Input = React.forwardRef(function Input(
   { label, type = "text", className = "", ...props },
-  ref
+  ref,
 ) {
   const id = useId();
 
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={id} className="inline-block mb-1 pl-1">
+        <label
+          htmlFor={id}
+          className="mb-2 inline-block text-sm font-semibold text-[#F9FAFB]">
           {label}
         </label>
       )}
@@ -19,7 +21,24 @@ const Input = React.forwardRef(function Input(
         id={id}
         type={type}
         ref={ref}
-        className={`px-3 py-2 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full ${className}`}
+        className={`
+          w-full
+          rounded-lg
+          border
+          border-[#374151]
+          bg-[#273449]
+          px-3.5
+          py-2.5
+          text-[#F9FAFB]
+          outline-none
+          transition-all
+          duration-200
+          placeholder:text-[#6B7280]
+          focus:border-[#2A9D8F]
+          focus:ring-2
+          focus:ring-[#2A9D8F]/15
+          ${className}
+        `}
       />
     </div>
   );
