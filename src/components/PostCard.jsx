@@ -10,17 +10,18 @@ function PostCard({ $id, title, featuredImage }) {
           <img
             src={service.getFilePreview(featuredImage)}
             alt={title}
+            loading="lazy"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
 
-        <div className="p-5">
-          <h2 className="line-clamp-2 text-lg font-bold leading-snug text-[#F9FAFB] transition-colors duration-200 group-hover:text-[#38B2A3]">
+        <div className="p-4 sm:p-5">
+          <h2 className="line-clamp-2 text-base font-bold leading-snug text-[#F9FAFB] transition-colors duration-200 group-hover:text-[#38B2A3] sm:text-lg">
             {title}
           </h2>
 
           <div className="mt-4 flex items-center justify-between">
-            <span className="text-sm font-medium text-[#9CA3AF]">
+            <span className="text-xs font-medium text-[#9CA3AF] sm:text-sm">
               Read article
             </span>
 

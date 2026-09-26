@@ -18,11 +18,11 @@ function AllPosts() {
   }, []);
 
   return (
-    <div className="min-h-[calc(100vh-72px)] bg-[#111827] text-[#F9FAFB]">
+    <div className="min-h-[calc(100vh-68px)] bg-[#111827] text-[#F9FAFB] sm:min-h-[calc(100vh-72px)]">
       <section className="border-b border-[#374151] bg-[#111827]">
         <Container>
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
-            <p className="text-sm font-semibold uppercase tracking-wider text-[#2A9D8F]">
+          <div className="mx-auto max-w-7xl px-4 py-10 sm:py-14 md:py-16">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#2A9D8F] sm:text-sm">
               Discover
             </p>
 
@@ -30,7 +30,7 @@ function AllPosts() {
               Explore all posts
             </h1>
 
-            <p className="mt-3 max-w-2xl text-base leading-7 text-[#9CA3AF]">
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-[#9CA3AF] sm:text-base sm:leading-7">
               Discover ideas, stories, and perspectives shared by the Quorilo
               community.
             </p>
@@ -38,17 +38,17 @@ function AllPosts() {
         </Container>
       </section>
 
-      <section className="bg-[#111827] py-12 sm:py-16">
+      <section className="bg-[#111827] py-10 sm:py-14 md:py-16">
         <Container>
           {loading ? (
-            <div className="flex min-h-75 items-center justify-center">
+            <div className="flex min-h-65 items-center justify-center">
               <p className="text-sm font-medium text-[#9CA3AF]">
                 Loading posts...
               </p>
             </div>
           ) : posts.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-[#374151] bg-[#1F2937] px-6 py-16 text-center">
-              <h2 className="text-xl font-bold text-[#F9FAFB]">
+            <div className="rounded-2xl border border-dashed border-[#374151] bg-[#1F2937] px-5 py-12 text-center sm:px-6 sm:py-16">
+              <h2 className="text-lg font-bold text-[#F9FAFB] sm:text-xl">
                 No posts available yet.
               </h2>
 
@@ -58,7 +58,7 @@ function AllPosts() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {posts.map((post) => (
                 <PostCard key={post.$id} {...post} />
               ))}

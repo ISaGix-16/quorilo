@@ -14,7 +14,7 @@ function LogoutBtn() {
   return (
     <button
       onClick={logoutHandler}
-      className="rounded-lg px-3 py-2 text-sm font-medium text-[#9CA3AF] transition-all duration-200 hover:bg-[#273449] hover:text-[#F9FAFB]">
+      className="whitespace-nowrap rounded-lg px-2.5 py-2 text-xs font-medium text-[#9CA3AF] transition-all duration-200 hover:bg-[#273449] hover:text-[#F9FAFB] sm:px-3 sm:text-sm">
       Logout
     </button>
   );
