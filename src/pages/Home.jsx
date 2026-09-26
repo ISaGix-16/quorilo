@@ -7,9 +7,7 @@ function Home() {
 
   useEffect(() => {
     appwriteService.getPosts().then((posts) => {
-      if (posts) {
-        setPosts(posts.documents);
-      }
+      setPosts(posts?.rows || []);
     });
   }, []);
 
