@@ -15,11 +15,15 @@ function Signup() {
   const create = async (data) => {
     setError("");
     try {
-      const userData = await authService.createAccount(data);
-      if (userData) {
+      const createdUser = await authService.createAccount(data);
+
+      if (createdUser) {
         const userData = await authService.getCurrentUser();
 
-        if (userData) dispatch(login(userData));
+        if (userData) {
+          dispatch(login({ userData }));
+        }
+
         navigate("/");
       }
     } catch (error) {
@@ -87,9 +91,7 @@ function Signup() {
               })}
             />
 
-            <Button type="submit" className="w-full">
-              Create Account
-            </Button>
+            <Button type="submit">Create Account</Button>
           </div>
         </form>
       </div>

@@ -1,20 +1,25 @@
-// import React from "react";
+import React from "react";
 
-function Button({
-  children,
-  type = "button",
-  bgColor = "bg-blue-600",
-  textColor = "text-white",
-  className = "",
-  ...props
-}) {
+const Button = React.forwardRef(function Button(
+  {
+    children,
+    type = "button",
+    bgColor = "bg-blue-500",
+    className = "",
+    ...props
+  },
+  ref
+) {
   return (
-    <div
-      className={`px-4 py-4 rounded-lg ${bgColor} ${textColor} ${className}`}
-      {...props}>
+    <button
+      ref={ref}
+      type={type}
+      className={`px-4 py-2 rounded-lg text-white ${bgColor} ${className}`}
+      {...props}
+    >
       {children}
-    </div>
+    </button>
   );
-}
+});
 
 export default Button;
