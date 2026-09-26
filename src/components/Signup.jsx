@@ -70,7 +70,7 @@ function Signup() {
                 validate: {
                   matchPattern: (value) =>
                     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ||
-                    "Email address must be a vlaid address",
+                    "Email address must be a valid address",
                 },
               })}
             />
