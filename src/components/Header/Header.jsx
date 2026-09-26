@@ -28,7 +28,9 @@ function Header() {
       <Container>
         <nav className="flex min-h-17 flex-wrap items-center justify-between gap-3 py-2 sm:min-h-18 sm:flex-nowrap sm:py-0">
           {/* Brand */}
-          <Link to="/" className="flex shrink-0 items-center gap-2.5">
+          <Link
+            to="/"
+            className="flex shrink-0 items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2A9D8F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111827]">
             <Logo width="40px" />
 
             <div className="flex flex-col">
@@ -52,7 +54,7 @@ function Header() {
                       <NavLink
                         to={item.slug}
                         className={({ isActive }) =>
-                          `whitespace-nowrap rounded-lg px-2.5 py-2 text-xs font-medium transition-all duration-200 sm:px-3.5 sm:text-sm ${
+                          `whitespace-nowrap rounded-lg px-2.5 py-2 text-xs font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2A9D8F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111827] sm:px-3.5 sm:text-sm ${
                             isActive
                               ? "bg-[#163B38] text-[#38B2A3]"
                               : "text-[#9CA3AF] hover:bg-[#273449] hover:text-[#F9FAFB]"
@@ -70,13 +72,13 @@ function Header() {
               <div className="ml-1 flex shrink-0 items-center gap-1 border-l border-[#374151] pl-2 sm:ml-3 sm:gap-2 sm:pl-3">
                 <Link
                   to="/login"
-                  className="whitespace-nowrap rounded-lg px-2.5 py-2 text-xs font-medium text-[#9CA3AF] transition-colors duration-200 hover:bg-[#273449] hover:text-[#F9FAFB] sm:px-4 sm:text-sm">
+                  className="whitespace-nowrap rounded-lg px-2.5 py-2 text-xs font-medium text-[#9CA3AF] transition-colors duration-200 hover:bg-[#273449] hover:text-[#F9FAFB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2A9D8F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111827] sm:px-4 sm:text-sm">
                   Login
                 </Link>
 
                 <Link
                   to="/signup"
-                  className="whitespace-nowrap rounded-lg bg-[#2A9D8F] px-2.5 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:bg-[#38B2A3] sm:px-4 sm:text-sm">
+                  className="whitespace-nowrap rounded-lg bg-[#2A9D8F] px-2.5 py-2 text-xs font-semibold text-white transition-colors duration-200 hover:bg-[#38B2A3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38B2A3] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111827] sm:px-4 sm:text-sm">
                   <span className="sm:hidden">Join</span>
                   <span className="hidden sm:inline">Get Started</span>
                 </Link>

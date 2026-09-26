@@ -37,6 +37,12 @@ function Post() {
   }, [slug, navigate]);
 
   const deletePost = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this article? This action cannot be undone.",
+    );
+
+    if (!confirmed) return;
+
     const status = await appwriteService.deletePost(post.$id);
 
     if (status) {
@@ -51,7 +57,12 @@ function Post() {
   if (loading) {
     return (
       <div className="flex min-h-[calc(100vh-68px)] items-center justify-center bg-[#111827] sm:min-h-[calc(100vh-72px)]">
-        <p className="text-sm font-medium text-[#9CA3AF]">Loading article...</p>
+        <div className="flex items-center gap-3">
+          <span className="h-5 w-5 animate-spin rounded-full border-2 border-[#374151] border-t-[#2A9D8F]" />
+          <p className="text-sm font-medium text-[#9CA3AF]">
+            Loading article...
+          </p>
+        </div>
       </div>
     );
   }
@@ -61,7 +72,7 @@ function Post() {
   const cleanContent = DOMPurify.sanitize(post.content);
 
   return (
-    <div className="min-h-[calc(100vh-68px)] bg-[#111827] py-8 text-[#F9FAFB] sm:py-12 md:py-16 sm:min-h-[calc(100vh-72px)]">
+    <div className="min-h-[calc(100vh-68px)] bg-[#111827] py-8 text-[#F9FAFB] sm:min-h-[calc(100vh-72px)] sm:py-12 md:py-16">
       <Container>
         <article className="mx-auto max-w-4xl">
           {/* Header */}
@@ -100,7 +111,7 @@ function Post() {
             />
           </div>
 
-          {/* Content */}
+          {/* Article content */}
           <div className="mt-6 rounded-xl border border-[#374151] bg-[#1F2937] px-5 py-7 sm:mt-8 sm:rounded-2xl sm:px-8 sm:py-10">
             <div
               className="
@@ -140,11 +151,14 @@ function Post() {
                 [&_strong]:font-semibold
                 [&_strong]:text-[#F9FAFB]
 
+                [&_em]:text-[#E5E7EB]
+
                 [&_a]:wrap-break-word
                 [&_a]:font-medium
                 [&_a]:text-[#38B2A3]
                 [&_a]:underline
                 [&_a]:underline-offset-4
+                [&_a:hover]:text-[#2A9D8F]
 
                 [&_ul]:mb-5
                 [&_ul]:list-disc
@@ -158,6 +172,8 @@ function Post() {
                 [&_ol]:pl-5
                 sm:[&_ol]:pl-6
 
+                [&_li]:pl-1
+
                 [&_blockquote]:my-6
                 [&_blockquote]:border-l-4
                 [&_blockquote]:border-[#2A9D8F]
@@ -168,6 +184,55 @@ function Post() {
                 [&_blockquote]:text-[#9CA3AF]
                 sm:[&_blockquote]:px-5
 
+                [&_code]:rounded
+                [&_code]:bg-[#111827]
+                [&_code]:px-1.5
+                [&_code]:py-0.5
+                [&_code]:font-mono
+                [&_code]:text-[0.9em]
+                [&_code]:text-[#38B2A3]
+
+                [&_pre]:my-6
+                [&_pre]:overflow-x-auto
+                [&_pre]:rounded-xl
+                [&_pre]:border
+                [&_pre]:border-[#374151]
+                [&_pre]:bg-[#111827]
+                [&_pre]:p-4
+                [&_pre]:font-mono
+                [&_pre]:text-sm
+                [&_pre]:leading-6
+                [&_pre]:text-[#D1D5DB]
+
+                [&_pre_code]:bg-transparent
+                [&_pre_code]:p-0
+                [&_pre_code]:text-inherit
+
+                [&_table]:my-6
+                [&_table]:w-full
+                [&_table]:border-collapse
+                [&_table]:overflow-hidden
+
+                [&_th]:border
+                [&_th]:border-[#374151]
+                [&_th]:bg-[#273449]
+                [&_th]:px-3
+                [&_th]:py-2
+                [&_th]:text-left
+                [&_th]:font-semibold
+                [&_th]:text-[#F9FAFB]
+
+                [&_td]:border
+                [&_td]:border-[#374151]
+                [&_td]:px-3
+                [&_td]:py-2
+                [&_td]:text-[#D1D5DB]
+
+                [&_hr]:my-8
+                [&_hr]:border-0
+                [&_hr]:border-t
+                [&_hr]:border-[#374151]
+
                 [&_img]:my-6
                 [&_img]:h-auto
                 [&_img]:max-w-full
@@ -177,11 +242,11 @@ function Post() {
             />
           </div>
 
-          {/* Bottom */}
+          {/* Bottom navigation */}
           <div className="mt-6 border-t border-[#374151] pt-5 sm:mt-8 sm:pt-6">
             <Link
               to="/all-posts"
-              className="text-sm font-semibold text-[#2A9D8F] transition-colors duration-200 hover:text-[#38B2A3]">
+              className="inline-flex items-center rounded-md text-sm font-semibold text-[#2A9D8F] transition-colors duration-200 hover:text-[#38B2A3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2A9D8F] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111827]">
               ← Back to all posts
             </Link>
           </div>

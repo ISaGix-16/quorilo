@@ -73,6 +73,10 @@ a {
   color: var(--text-primary);
 }
 
+:focus-visible {
+  outline: none;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

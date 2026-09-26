@@ -25,8 +25,14 @@ function Button({
         hover:-translate-y-0.5
         hover:shadow-md
         active:translate-y-0
+        focus-visible:outline-none
+        focus-visible:ring-2
+        focus-visible:ring-[#38B2A3]
+        focus-visible:ring-offset-2
+        focus-visible:ring-offset-[#111827]
         disabled:cursor-not-allowed
         disabled:opacity-50
+        disabled:hover:translate-y-0
         ${bgColor}
         ${textColor}
         ${className}
