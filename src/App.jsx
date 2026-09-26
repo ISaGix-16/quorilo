@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
 import { login, logout } from "./store/authSlice";
 import { Footer, Header } from "./components";
-// import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function App() {
 
@@ -20,7 +20,6 @@ function App() {
       }
     })
     .finally(() => setLoading(false))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return !loading ? (
@@ -28,7 +27,7 @@ function App() {
       <div className="w-full block">
         <Header />
         <main>
-          todo : {/* <Outlet /> */}
+          <Outlet />
         </main>
         <Footer />
       </div>
