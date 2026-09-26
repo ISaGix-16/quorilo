@@ -95,7 +95,7 @@ function Signup() {
                   required: true,
                   validate: {
                     matchPattern: (value) =>
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/.test(
                         value,
                       ) ||
                       "Password must be at least 8 characters with uppercase, lowercase, number, and special character",
