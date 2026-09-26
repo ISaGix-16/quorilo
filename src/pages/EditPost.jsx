@@ -13,6 +13,8 @@ function EditPost() {
       appwriteService.getPost(slug).then((post) => {
         if (post) {
           setPost(post);
+        } else {
+          navigate("/");
         }
       });
     } else {
@@ -22,9 +24,9 @@ function EditPost() {
 
   return post ? (
     <div className="py-8">
-        <Container>
-            <PostForm post={post}/>
-        </Container>
+      <Container>
+        <PostForm post={post} />
+      </Container>
     </div>
   ) : null;
 }

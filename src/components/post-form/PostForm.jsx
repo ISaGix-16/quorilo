@@ -21,19 +21,21 @@ function PostForm({ post }) {
 
   const submit = async (data) => {
     if (post) {
-      const file = data.image[0]
-        ? await appwriteService.uploadFile(data.image?.[0])
+      const file = data.image?.[0]
+        ? await appwriteService.uploadFile(data.image[0])
         : null;
-
-      if (file) {
-        await appwriteService.deleteFile(post.featuredImage);
-      }
 
       const dbPost = await appwriteService.updatePost(post.$id, {
         ...data,
         featuredImage: file ? file.$id : post.featuredImage,
       });
+
       if (dbPost) {
+        // Delete old image only after successful update
+        if (file && post.featuredImage) {
+          await appwriteService.deleteFile(post.featuredImage);
+        }
+
         navigate(`/post/${dbPost.$id}`);
       }
     } else {
@@ -67,7 +69,7 @@ function PostForm({ post }) {
 
   React.useEffect(() => {
     const subscription = watch((value, { name }) => {
-      if (name == "title") {
+      if (name === "title") {
         setValue("slug", slugTransform(value.title), {
           shouldValidate: true,
         });

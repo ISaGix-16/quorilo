@@ -4,6 +4,7 @@ import appwriteService from "../appwrite/config";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import DOMPurify from "dompurify";
 
 export default function Post() {
   const [post, setPost] = useState(null);
@@ -24,6 +25,12 @@ export default function Post() {
   }, [slug, navigate]);
 
   const deletePost = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this post?",
+    );
+
+    if (!confirmed) return;
+
     appwriteService.deletePost(post.$id).then((status) => {
       if (status) {
         appwriteService.deleteFile(post.featuredImage);
@@ -58,7 +65,9 @@ export default function Post() {
         <div className="w-full mb-6">
           <h1 className="text-2xl font-bold">{post.title}</h1>
         </div>
-        <div className="browser-css">{parse(post.content)}</div>
+        <div className="browser-css">
+          {parse(DOMPurify.sanitize(post.content))}
+        </div>
       </Container>
     </div>
   ) : null;
